@@ -1,0 +1,96 @@
+html2server
+git pull
+
+-
+
+deno run -A oakHello.js
+deno run -A oakHtml.js
+//要加-A不然跑步出來，所有的權限都要開啟，讓別人存取你電腦
+//要開第二個，前面要全關，不然執行不了
+
+-
+
+
+127.0.0.1:8000
+localhost:8000
+//代表自己的那台電腦port
+
+-
+
+ssh guest@139.162.90.34:8000
+密碼
+mkdir 8000
+ls
+cd 8000
+ls
+
+git clone 
+html2server
+https網址
+-
+網址證書letsencrypt.org
+- 
+雲端主機
+-
+網域名稱.com
+要付錢
+-
+
+
+///第一個
+
+import { Application } from "https://deno.land/x/oak/mod.ts";
+//引用函式庫 
+
+const app = new Application();
+//根據類別 創造物件 application 怎麼跟前端互動
+
+app.use((ctx) => {
+  // ctx.response.body = "Hello World!";
+  ctx.response.body = "Hello 你好!";
+});
+//回應hello你好
+//箭頭函數
+
+console.log('start at : http://127.0.0.1:8000')
+await app.listen({ port: 8000 });
+
+-
+
+///第二個
+
+
+import { Application } from "https://deno.land/x/oak/mod.ts";
+
+const app = new Application();
+
+app.use((ctx) => {
+  // ctx.response.type = 'text/plain'
+  // ctx.response.type = 'text/html'
+  ctx.response.body = `
+<html>
+  <body>
+    <h1>My web site</h1>
+    <a href="https://tw.youtube.com">YouTube</a>
+  </body>
+</html>`
+});
+
+console.log('start at : http://127.0.0.1:8000')
+await app.listen({ port: 8000 });
+
+-
+網站：客戶端和伺服端來回互動
+-
+完整的靜態網站
+圖片
+超連結
+資訊
+-
+放在public資料夾
+index.html預設的
+索引檔
+-
+網站才有辦法存資料
+可以寫BLOG不能只是網頁
+網頁式快取資料

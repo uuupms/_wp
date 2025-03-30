@@ -1,4 +1,60 @@
 note 
+--
+oakMe2
+--
+// 引入 Oak 框架中的 Application 類別，這是 Deno 上的一個 Web 框架
+import { Application } from "https://deno.land/x/oak/mod.ts";
+
+// 建立一個新的應用程式實例
+const app = new Application();
+
+// 設定應用程式的中介函式 (Middleware)
+app.use((ctx) => {
+  // 紀錄請求的 URL
+  console.log('url=', ctx.request.url);
+  
+  // 取得請求的路徑名稱
+  let pathname = ctx.request.url.pathname;
+  
+  // 根目錄路由，顯示自我介紹的 HTML 頁面
+  if (pathname == '/') {
+    ctx.response.body = `<html>
+<body>
+<h1>自我介紹</h1>
+<ol>
+<li><a href="/name">姓名</a></li>
+<li><a href="/colledge">大學</a></li>
+<li><a href="/major">科系</a></li>
+</ol>
+</body>
+</html>`;
+  } 
+  // /name 路由，回傳姓名
+  else if (pathname == '/name') {
+    ctx.response.body = 'pms';
+  }  
+  // /colledge 路由，回傳大學名稱
+  else if (pathname == '/colledge') {
+    ctx.response.body = '金大';
+  } 
+  // /major 路由，回傳科系名稱
+  else if (pathname == '/major') {
+    ctx.response.body = '資工';
+  }
+  // 其他路徑目前沒有回應內容 (可以加入 404 處理)
+  else {
+    // ctx.response.status = 404;
+    // ctx.response.body = 'Not Found!';
+  }
+});
+
+// 在主控台輸出伺服器啟動訊息
+console.log('start at : http://127.0.0.1:8000');
+
+// 啟動伺服器，監聽 8000 端口
+await app.listen({ port: 8000 });
+
+--
 oakApp.js
 ---
 

@@ -1,0 +1,24 @@
+HTML（HyperText Markup Language） 是建立網頁的基礎語言，用來描述網頁的內容與結構。
+
+HTML 基本範例
+<!DOCTYPE html>
+<html>
+<head>
+  <title>我的第一個網頁</title>
+</head>
+<body>
+  <h1>你好，世界！</h1>
+  <p>這是一段段落。</p>
+</body>
+</html>
+
+HTML 常見標籤
+標籤	用途
+<h1> 到 <h6>	標題（h1 最大）
+<p>	段落
+<a href="">	超連結
+<img src="">	圖片
+<div>	區塊（結構用）
+<span>	行內區塊（小標記用）
+<input>、<form>	表單元件
+

@@ -1,0 +1,18 @@
+"""
+1. 找出最大值
+撰寫一個函數 find_max(numbers)，輸入一個整數陣列，回傳最大值。
+
+def find_max(numbers):
+    pass
+"""
+def find_max(numbers):
+    if not numbers:
+        return None
+
+    max_num = numbers[0]
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+    return max_num
+
+print(find_max([]))

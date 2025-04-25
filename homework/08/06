@@ -1,0 +1,62 @@
+"""
+6. 計算字元出現次數
+寫一個函數 count_chars(s)，輸入一個字串，回傳每個字元出現的次數，格式為字典。
+
+範例：
+count_chars("hello") 
+# 輸出: {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+
+"""
+
+def count_chars(s):
+    result = {}
+    for char in s:
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+    return result
+
+print(count_chars("hello"))
+
+
+"""
+def count_chars(s):
+    result = {}  # 建立一個空字典來儲存字元出現次數
+    for char in s:  # 逐一讀取字串中的每個字元
+        if char in result:
+            result[char] += 1  # 如果字元已經出現過，就 +1
+        else:
+            result[char] = 1  # 如果沒出現過，就設定為 1
+    return result  # 回傳結果字典
+
+🧪 想試別的字串也可以：
+print(count_chars("banana"))  
+# {'b': 1, 'a': 3, 'n': 2}
+
+🧠 小補充：
+你也可以用 dict.get() 寫得更簡潔一點：
+
+def count_char(s):
+    result = {}
+    for char in s:
+        result[char] = result.get(char, 0) + 1
+    return result
+
+result.get(char, 0)：如果字典中有 char，就取它的值；如果沒有，就當作 0。
+
+然後每次都加 1。
+
+🧪 測試更多字串：
+print(count_chars("banana"))  # {'b': 1, 'a': 3, 'n': 2}
+print(count_chars("Python"))  # {'P': 1, 'y': 1, 't': 1, 'h': 1, 'o': 1, 'n': 1}
+
+
+🆚 額外小技巧（可選）：
+如果你想讓這段程式更短，可以用 .get()：
+def count_chars(s):
+    result = {}
+    for char in s:
+        result[char] = result.get(char, 0) + 1
+    return result
+

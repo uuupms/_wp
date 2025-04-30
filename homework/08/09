@@ -1,0 +1,28 @@
+"""
+9. 找出 list 中出現次數最多的數字
+寫一個函數 most_common(nums)，輸入一個整數 list，找出其中出現次數最多的數字（可用字典記錄出現次數）。
+"""
+
+def most_common(nums):
+    count_dict = {}
+
+    for num in nums:
+        if num in count_dict:
+            count_dict[num] += 1
+        else:
+            count_dict[num] = 1
+
+    most_common_num = max(count_dict, key=count_dict.get)
+    return most_common_num
+
+
+"""
+✅ 說明：
+count_dict[num] += 1：累加該數字的出現次數。
+
+max(count_dict, key=count_dict.get)：從字典中找出對應數值（出現次數）最大的 key（數字）。
+
+nums = [1, 2, 2, 3, 3, 3, 4]
+print(most_common(nums))  # 輸出：3
+
+"""

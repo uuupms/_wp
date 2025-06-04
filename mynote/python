@@ -1,0 +1,8 @@
+ pip install "fastapi[standard]"
+
+ fastapi dev main.py
+
+fastapi dev main.py --port 8001
+
+uvicorn app:app --reload
+

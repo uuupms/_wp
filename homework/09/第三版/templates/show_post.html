@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 40px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .post-container {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        p {
+            line-height: 1.6;
+            color: #444;
+        }
+        .meta {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-right: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-back {
+            background-color: #80b4e1;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <h1>{{ post.title }}</h1>
+        <p class="meta">
+    作者：{{ post.username }}　|　
+    發布時間：{{ post.created_at.strftime('%Y-%m-%d %H:%M') }}
+</p>
+        <p>{{ post.body }}</p>
+        
+
+
+        <div class="buttons">
+            <a href="/" class="btn btn-back">🔙 回首頁</a>
+
+            {% if user and user.username == post.username %}
+                <a href="/post/{{ post.id }}/edit" class="btn btn-edit">📝 編輯</a>
+                <form action="/post/{{ post.id }}/delete" method="post">
+                    <button type="submit" class="btn btn-delete" onclick="return confirm('確定刪除？')">🗑️ 刪除</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

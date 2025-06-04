@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>聊天室</title>
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+  <div class="chat-box">
+  <h1>聊天室</h1>
+  <ul id="messages"></ul>
+  <div class="input-area">
+  <input id="msg" placeholder="輸入訊息..." />
+  <button onclick="send()">送出</button>
+  </div>
+</div>
+  <script>
+    const name = localStorage.getItem('chatUserName');
+    if (!name) window.location.href = 'login.html';
+
+    const socket = new WebSocket('ws://' + window.location.host + '/ws');
+
+    socket.onopen = () => {
+      socket.send(JSON.stringify({ type: 'login', name }));
+    };
+
+    socket.onmessage = (event) => {
+      const li = document.createElement('li');
+      li.textContent = event.data;
+      document.getElementById('messages').appendChild(li);
+    };
+
+    function send() {
+      const text = document.getElementById('msg').value.trim();
+      if (text) {
+        socket.send(JSON.stringify({ type: 'message', text }));
+        document.getElementById('msg').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

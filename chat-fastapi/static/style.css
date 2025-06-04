@@ -1,0 +1,91 @@
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+  background-color: #d8eaf1;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: rgb(152, 118, 155);
+  text-align: center;
+  border: 2px solid white;
+  background-color: white;
+  border-radius: 4px;
+  
+}
+
+input {
+  padding: 6px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 6px 12px;
+  margin-left: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #a994bd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  background: white;
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+li {
+  padding: 4px 8px;
+  border-bottom: 1px solid #eee;
+}
+/* ✅ 外層容器置中 */
+body {
+  display: flex;
+  justify-content: center;  /* 水平置中 */
+  align-items: center;      /* 垂直置中 */
+  height: 50vh;            /* 覆蓋整個視窗高度 */
+  margin: 0;
+  background-color: #d8eaf1;
+}
+
+/* ✅ 內層表單樣式 */
+.center-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+.center-box {
+  max-width: 400px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+ul#messages {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 0;
+  background: white;
+  list-style: none;
+  word-wrap: break-word;
+}
+
+li {
+  padding: 4px 8px;
+  border-bottom: 1px solid #eee;
+  word-break: break-word;
+}

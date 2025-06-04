@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>所有貼文</title></head>
+<body>
+    <h1>所有貼文</h1>
+    {% if user %}
+        <p>你好，{{ user.username }}！<a href="/logout">登出</a></p>
+        <p><a href="/post/new">✍️ 發表貼文</a></p>
+    {% else %}
+        <p><a href="/login">登入</a> 或 <a href="/signup">註冊</a></p>
+    {% endif %}
+    <hr>
+    {% for post in posts %}
+        <div style="border:1px solid #ccc; padding:10px;">
+            <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+            <p>{{ post.body }}</p>
+            <p>作者：{{ post.username }}</p>
+            {% if user and user.username == post.username %}
+                <a href="/post/{{ post.id }}/edit">✏️ 編輯</a>
+                <form action="/post/{{ post.id }}/delete" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('確定刪除？')">🗑️ 刪除</button>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
